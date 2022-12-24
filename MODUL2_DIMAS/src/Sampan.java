@@ -12,12 +12,13 @@ public class Sampan extends TransportasiAir{
         System.out.println( "Transportasi jenis sampan memiliki kursi"+jumlahKursi+", menggunakan");
     }
     public void berlayar(){
+        System.out.println("sdkjnskjdns");
 
     }
     public void berlabuh(){
-
+        System.out.println("sdkjnsknsdfsdsdf");
     }
     public void berlabuh (int jangkar){
-
+        System.out.println("dfskjnsdklnsdlkn");
     }
 }

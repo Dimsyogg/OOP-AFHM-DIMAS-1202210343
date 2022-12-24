@@ -10,7 +10,7 @@ public class MainApp{
         kapal.berlabuh();
         System.out.println(
         );
-        Sampan sampan = new Sampan(5000,5000,5000);
+        Sampan sampan = new Sampan();
         sampan.informasi();
         sampan.berlayar();
         sampan.berlabuh();

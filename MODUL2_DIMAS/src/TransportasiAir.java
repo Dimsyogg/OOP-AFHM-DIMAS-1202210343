@@ -17,9 +17,9 @@ public class TransportasiAir {
     }
 
     public void berlayar(){
-        System.out.println();
+        System.out.println("sdjahbsadlkjbs");
     }
     public void berlabuh(){
-        System.out.println();
+        System.out.println("asdiulhkjhdssdkjs");
     }
 }
