@@ -1,26 +1,24 @@
-public class Waiters implements Runnable {
-
+public class Waiter implements Runnable {
     private final int orderQty;
     private final int customerID;
     static int foodPrice = 50000;
 
-    public Waiters(int customerID, int orderQty) {
+    public Waiter(int customerID, int orderQty) {
         this.customerID = customerID;
-        this.orderQty = orderQty;    
+        this.orderQty = orderQty;
     }
-
     @Override
     public void run() {
+        // call getFood method and pending it to 15000 ms
         while (true) {
-            makeFood();
+            getFood();
             try {
-                Thread.sleep(3000);
+                Thread.sleep(15000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
     public void orderInfo() {
         System.out.println("\n                     ESD RESTAURANT                       ");
         System.out.println("============================================================");
@@ -29,20 +27,22 @@ public class Waiters implements Runnable {
         System.out.println("Total Price    :                                      " + this.orderQty * foodPrice);
         System.out.println("============================================================");
     }
-
-    public void makeFood() {
+    // create synchronized method getFood
+    public void getFood() {
         synchronized(Restaurant.getLock()) {
-
-            System.out.println("Waiter: Makanan siap untuk diantarkan");
-            Restaurant chef = new Restaurant();
-            chef.setWaitingForPickup(false);
-
+            System.out.println("Waiter: Makanan siap untuk di hidangkan");
+            Restaurant restaurant = new Restaurant();
+            restaurant.setWaitingForPickup(false);
+            // check if value of getFoodNumber form Restaurant class is equal to orderQty
+            // if same, call method orderInfo() to print order info and exit the program
             if (Restaurant.getFoodNumber() == this.orderQty + 1) {
                 orderInfo();
                 System.exit(0);
             }
             Restaurant.getLock().notifyAll();
-            System.out.println("Waiter: Memberi pesan kepada Restoran untuk membuat makanan lain\n");
+            System.out.println("Waiter: Memberi tahu Restauran untuk membuat makanan lain\n");
+
         }
     }
 }
+
