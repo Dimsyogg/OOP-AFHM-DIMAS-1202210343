@@ -43,6 +43,9 @@ public class Calculation implements Runnable {
         }
         this.area = phi*radius*radius;
     }
+    public double getCircle() {
+        return this.area;
+      }
 
     //trapesium
     public void setTrapezoid(double a, double b, double t) throws IllegalArgumentException {
@@ -54,9 +57,7 @@ public class Calculation implements Runnable {
         return this.area;
       }
 
-  public double getCircle() {
-    return this.area;
-  }
+  
     @Override
     public void run() {
       System.out.println("Program will start in");
